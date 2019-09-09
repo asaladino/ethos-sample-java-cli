@@ -11,7 +11,8 @@ First thing we need to do is to grab the source.
 `git clone https://github.com/asaladino/ethos-sample-java-cli.git`
 
 ## Build Jar
-To build the jar file for deployment you will need to have gradle installed.
+To build the jar file for deployment you will need to have gradle installed
+ [(download gradle)](https://gradle.org/install/).
 
 1. Open cmd / powershell/ terminal
 2. Change directories to where you checked out the code: `./ethos-sample-java-cli`
