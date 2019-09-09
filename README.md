@@ -1,4 +1,4 @@
-# Ethos com.ellucian.app.Sample Java CLI
+# Ethos Sample Java CLI
 
 This is a sample java commandline app, with deployment instructions.
 
