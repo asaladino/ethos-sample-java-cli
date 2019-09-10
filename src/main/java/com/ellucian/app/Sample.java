@@ -30,16 +30,16 @@ public class Sample {
     private List<Building> buildings;
 
 
-    public static void main(String[] args) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+    public static void main(String[] args) throws Exception {
         final Sample sample = new Sample();
-        System.out.println("Started");
+        System.out.println("Starting");
 
         sample.loadConfig(args[0]);
         sample.ethosAuth();
         sample.retrieveBuildings();
         sample.saveBuildingsToCsv();
 
-        System.out.println("Finish");
+        System.out.println("Finished");
     }
 
     /**

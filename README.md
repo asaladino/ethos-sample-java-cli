@@ -16,7 +16,7 @@ To build the jar file for deployment you will need to have gradle installed
 
 1. Open cmd / powershell/ terminal
 2. Change directories to where you checked out the code: `./ethos-sample-java-cli`
-3. The run: `gradle clean build jar`
+3. The run: `gradle clean build fatJar`
 
 Your jar file has been generated and is located at `./build/libs/ethos-sample-java-cli-1.0.jar`
 
