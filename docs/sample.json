@@ -1,0 +1,4 @@
+{
+  "ethosApiKey": "your ethos key",
+  "csvFileLocation": "/path/to/the/output/location.csv"
+}
