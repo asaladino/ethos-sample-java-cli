@@ -11,6 +11,7 @@ import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -76,8 +77,16 @@ public class Sample {
      */
     private void retrieveBuildings() throws IOException {
         System.out.println("Getting all the buildings.");
-        final OkHttpClient client = new OkHttpClient.Builder().build();
+        String endpoint = "https://integrate.elluciancloud.com/api/buildings";
+        System.out.println(endpoint);
+        final OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(90, TimeUnit.SECONDS)
+                .writeTimeout(90, TimeUnit.SECONDS)
+                .readTimeout(90, TimeUnit.SECONDS)
+                .build();
+
         final Request request = new Request.Builder()
+                .url(endpoint)
                 .url("https://integrate.elluciancloud.com/api/buildings")
                 .header("accept", "application/json")
                 .addHeader("accept-charset", "UTF-8")
