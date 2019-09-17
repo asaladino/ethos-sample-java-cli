@@ -10,6 +10,7 @@ import java.io.Writer;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -96,23 +97,31 @@ public class Sample {
                 .get()
                 .build();
 
-            final Response response = client.newCall(request).execute();
-            final String buildingJson = response.body().string();
-            final Gson gson = new Gson();
-            final Type type = TypeToken.getParameterized(List.class, Building.class).getType();
-            buildings = gson.fromJson(buildingJson, type);
+        final Response response = client.newCall(request).execute();
+        final String buildingJson = response.body().string();
+        final Gson gson = new Gson();
+        final Type type = TypeToken.getParameterized(List.class, Building.class).getType();
+        buildings = gson.fromJson(buildingJson, type);
     }
 
     /**
      * Save the buildings to a csv file.
      */
     private void saveBuildingsToCsv() throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        // Filter buildings so only buildings that start with 'a' are outputted.
+        final List<Building> aBuildings = new ArrayList<>();
+        for (final Building building : buildings) {
+            if(building.getTitle().toLowerCase().charAt(0) == 'a') {
+                aBuildings.add(building);
+            }
+        }
+
         System.out.println("Saving the buildings to a csv file.");
-        try(Writer writer  = new FileWriter(config.csvFileLocation)) {
+        try (Writer writer = new FileWriter(config.csvFileLocation)) {
             StatefulBeanToCsv sbc = new StatefulBeanToCsvBuilder(writer)
                     .withSeparator(CSVWriter.DEFAULT_SEPARATOR)
                     .build();
-            sbc.write(buildings);
+            sbc.write(aBuildings);
         }
     }
 }
