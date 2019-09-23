@@ -88,7 +88,6 @@ public class Sample {
 
         final Request request = new Request.Builder()
                 .url(endpoint)
-                .url("https://integrate.elluciancloud.com/api/buildings")
                 .header("accept", "application/json")
                 .addHeader("accept-charset", "UTF-8")
                 .addHeader("authorization", "Bearer " + requestKey)
