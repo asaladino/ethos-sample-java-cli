@@ -32,10 +32,10 @@ java -jar ./build/libs/ethos-sample-java-cli-1.0.jar ./path-to-config/sample.jso
 2. Any server (windows or *nix).
 3. Java 8+
 4. Put the correct permissions on the jar file, such that your task scheduler can run the application.
--- cron
--- windows scheduler
--- sql server scheduler
--- oracle scheduler?
+ - cron
+ - windows scheduler
+ - sql server scheduler
+ - oracle scheduler?
 5. How often do you need the data refreshed?
 6. Select a location to put the jar file, configuration.json and where you want to output the csv file. 
 7. Make sure the user and server have correct permissions to create the csv file.
